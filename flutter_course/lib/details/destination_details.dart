@@ -17,69 +17,73 @@ class _MyDestinationDetailsState extends State<MyDestinationDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+      body: Column(
         children: [
-          // Ảnh nền
-          Positioned.fill(
-            child: Image.asset(
-              "assets/images/${widget.destination.urlImage}", // Sử dụng hình ảnh từ destination
-              fit: BoxFit.cover,
-            ),
-          ),
-          // Chữ nằm trên ảnh
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.34, // Khoảng cách từ trên xuống (bao gồm padding top)
-            left: 0, // Khoảng cách từ trái
-            right: 0, // Khoảng cách từ phải
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+          // Expanded widget for the background image with flex = 2
+          Expanded(
+            flex: 2,
+            child: Stack(
               children: [
-                Text(
-                  widget.destination.name, // Tên địa điểm
-                  style: TextStyle(
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white, // Màu chữ là màu trắng để tương phản với ảnh nền
-                    fontFamily: textFamily,
-                    shadows: [
-                      Shadow(
-                        blurRadius: 10.0, // Làm chữ nổi bật hơn trên nền
-                        color: Colors.black.withOpacity(0.7),
-                        offset: const Offset(0, 2),
+                Positioned.fill(
+                  child: Image.asset(
+                    "assets/images/${widget.destination.urlImage}", // Use image from destination
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                // Overlay text on the image
+                Positioned(
+                  top: MediaQuery.of(context).size.height * 0.22, // Adjust the position as needed
+                  left: 0,
+                  right: 0,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        widget.destination.name, // Destination name
+                        style: TextStyle(
+                          fontSize: 50,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontFamily: textFamily,
+                          shadows: [
+                            Shadow(
+                              blurRadius: 10.0, // Make the text stand out
+                              color: Colors.black.withOpacity(0.7),
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.location_pin, color: Colors.white),
+                          Text(
+                            widget.destination.location, // Location
+                            style: TextStyle(
+                              fontSize: 25,
+                              color: Colors.white,
+                              fontFamily: textFamily,
+                              shadows: [
+                                Shadow(
+                                  blurRadius: 5.0,
+                                  color: Colors.black.withOpacity(0.7),
+                                  offset: const Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(Icons.location_pin, color: Colors.white),
-                    Text(
-                      widget.destination.location, // Địa điểm
-                      style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white, // Màu chữ trắng
-                        fontFamily: textFamily,
-                        shadows: [
-                          Shadow(
-                            blurRadius: 5.0,
-                            color: Colors.black.withOpacity(0.7),
-                            offset: const Offset(0, 2),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
               ],
             ),
           ),
-          // Layer chứa thông tin với nền bo góc
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.5, // Khoảng cách từ trên xuống
-            left: 0,
-            right: 0,
-            bottom: 0,
+          // Expanded widget for details with flex = 3
+          Expanded(
+            flex: 3,
             child: ClipRRect(
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(40),
@@ -92,19 +96,19 @@ class _MyDestinationDetailsState extends State<MyDestinationDetails> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Hàng ngang avatar chèn nhau
+                      // Horizontal row with ratings and weather info
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(Icons.star, color: Colors.orange),
-                          Text('5.0', style: TextStyle(fontSize: 15, fontFamily: textFamily, color: Colors.orange)), // Tạm thời là giá trị cứng
+                          Text('5.0', style: TextStyle(fontSize: 15, fontFamily: textFamily, color: Colors.orange)),
                           SizedBox(width: 12),
                           Icon(Icons.cloud, color: Colors.blue),
-                          Text('19°C', style: TextStyle(fontSize: 15, fontFamily: textFamily, color: Colors.blue)), // Nhiệt độ
+                          Text('19°C', style: TextStyle(fontSize: 15, fontFamily: textFamily, color: Colors.blue)),
                           SizedBox(width: 12),
                           Icon(Icons.calendar_today, color: Colors.purple),
                           SizedBox(width: 12),
-                          Text('5 Day', style: TextStyle(fontSize: 15, fontFamily: textFamily, color: Colors.purple)), // Thời gian
+                          Text('5 Day', style: TextStyle(fontSize: 15, fontFamily: textFamily, color: Colors.purple)),
                         ],
                       ),
                       Container(
@@ -149,9 +153,9 @@ class _MyDestinationDetailsState extends State<MyDestinationDetails> {
                               ),
                             ),
                             const Positioned(
-                              top: 10,
-                              left: 160,
-                              child: Text("+28 recommend")
+                                top: 10,
+                                left: 160,
+                                child: Text("+28 recommend")
                             ),
                           ],
                         ),
@@ -167,7 +171,7 @@ class _MyDestinationDetailsState extends State<MyDestinationDetails> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        widget.destination.description, // Mô tả điểm đến
+                        widget.destination.description, // Destination description
                         style: const TextStyle(fontSize: 16, color: Colors.grey, fontFamily: textFamily),
                       ),
                       const SizedBox(height: 16),
@@ -176,7 +180,7 @@ class _MyDestinationDetailsState extends State<MyDestinationDetails> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            '\$${widget.destination.price}', // Giá tiền
+                            '\$${widget.destination.price}', // Display the price
                             style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w400,
@@ -185,11 +189,10 @@ class _MyDestinationDetailsState extends State<MyDestinationDetails> {
                           ),
                           ElevatedButton(
                             onPressed: () {
-                              // Hành động khi nhấn nút
+                              // Action when 'Book Now' is pressed
                             },
                             style: ElevatedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 35, vertical: 15),
+                              padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 15),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30),
                               ),
