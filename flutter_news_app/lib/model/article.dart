@@ -2,33 +2,33 @@ import 'package:flutter_news_app/model/source.dart';
 
 class Article {
   final Source source;
-  final String author;
+  final String? author;
   final String title;
-  final String description;
+  final String? description;
   final String url;
-  final String urlToImage;
+  final String? urlToImage;
   final String publishedAt;
-  final String content;
+  final String? content;
 
   Article(
       {required this.source,
-      required this.author,
+      this.author,
       required this.title,
-      required this.description,
+      this.description,
       required this.url,
       required this.urlToImage,
       required this.publishedAt,
-      required this.content});
+      this.content});
 
   factory Article.fromJson(Map<String, dynamic> json) {
     return Article(
         source: Source.fromJson(json['source']),
         author: json['author'],
-        title: json['title'],
+        title: json['title'] ?? 'No Title',
         description: json['description'],
-        url: json['url'],
+        url: json['url'] ?? '',
         urlToImage: json['urlToImage'],
-        publishedAt: json['publishedAt'],
+        publishedAt: json['publishedAt'] ?? 'No Date',
         content: json['content']);
   }
 }
