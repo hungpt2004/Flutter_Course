@@ -32,7 +32,7 @@ class _NewsDetailsState extends State<NewsDetails> {
               ),
               const SizedBox(height: 8),
               Text(
-                'By ${article.author ?? "Unknown"}',
+                '- By ${article.author ?? "Unknown"}',
                 style: const TextStyle(
                   fontSize: 16,
                   fontStyle: FontStyle.italic,

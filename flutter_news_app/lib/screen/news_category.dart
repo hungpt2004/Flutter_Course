@@ -29,13 +29,14 @@ class _NewsCardCategoryState extends State<NewsCardCategory> {
         child: Container(
           margin: const EdgeInsets.only(bottom: 5, top: 20),
           width: MediaQuery.of(context).size.width,
-          decoration:
-              BoxDecoration(borderRadius: BorderRadius.circular(20), boxShadow: [
-            BoxShadow(
-                color: Colors.white.withOpacity(0.5),
-                spreadRadius: 2,
-                blurRadius: 5,
-                offset: const Offset(0, 3)),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.white.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: const Offset(0, 3)),
           ]),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

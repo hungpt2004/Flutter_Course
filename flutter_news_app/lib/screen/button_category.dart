@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ButtonCategory extends StatefulWidget {
-  const ButtonCategory({super.key});
+  const ButtonCategory({super.key, required this.onSelected});
+
+  //Required get a function when HomeScreen call this Widget
+  final Function(String) onSelected;
 
   @override
   State<ButtonCategory> createState() => _ButtonCategoryState();
@@ -10,17 +13,31 @@ class ButtonCategory extends StatefulWidget {
 
 class _ButtonCategoryState extends State<ButtonCategory> {
 
-  final List<String> category = ["Science", "Sports", "Business", "Family", "Education"];
+  //List category
+  final List<String> category = [
+    "General",
+    "Science",
+    "Sports",
+    "Business",
+    "Entertainment",
+    "Health",
+    "Technology",
+  ];
+
+
+  String selectType = "";
+
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100, // Tăng chiều cao để chứa dấu chấm
+      height: 100,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: category.length,
         itemBuilder: (context, index) {
           final type = category[index];
+          final isSelected = type == selectType;
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: Column(
@@ -46,7 +63,12 @@ class _ButtonCategoryState extends State<ButtonCategory> {
                       style: const TextStyle(fontSize: 20, color: Colors.white),
                     ),
                   ),
-                  onPressed: () {}
+                  onPressed: () {
+                    setState(() {
+                      selectType = type;
+                    });
+                    widget.onSelected(type);
+                  }
                 ),
               ],
             ),

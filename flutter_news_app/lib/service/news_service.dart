@@ -9,24 +9,35 @@ class NewsApiService {
    Future<List<Article>> fetchData() async {
 
       String url = '$baseUrl/top-headlines?country=us&apiKey=$apiKey';
-      final response = await http.get(Uri.parse(url));
 
-      if (response.statusCode == 200) {
+      try {
 
-         final Map<String, dynamic> jsonData = json.decode(response.body);
-         final List<dynamic> articlesJson = jsonData['articles'];
+         final response = await http.get(Uri.parse(url));
 
-         return articlesJson.map((json) => Article.fromJson(json)).toList();
-      } else {
-         throw Exception('Failed to load top headlines');
+         if (response.statusCode == 200) {
+
+            final Map<String, dynamic> jsonData = json.decode(response.body);
+            final List<dynamic> articlesJson = jsonData['articles'];
+
+            return articlesJson.map((json) => Article.fromJson(json)).toList();
+         } else {
+            throw Exception('Failed to load top headlines');
+         }
+
+      } catch (e) {
+         throw Exception('Error fetching articles: $e');
       }
+
    }
 
    Future<List<Article>> fetchDataCategory(String category) async {
-      final url = '$baseUrl?country=us&category=$category&apiKey=$apiKey';
+
+      final url = '$baseUrl/top-headlines?country=us&category=$category&apiKey=$apiKey';
 
       try {
+
          final response = await http.get(Uri.parse(url));
+
          if (response.statusCode == 200) {
             final data = json.decode(response.body);
             final articles = data['articles'] as List;
@@ -34,6 +45,7 @@ class NewsApiService {
          } else {
             throw Exception('Failed to load articles: ${response.reasonPhrase}');
          }
+
       } catch (e) {
          throw Exception('Error fetching articles: $e');
       }

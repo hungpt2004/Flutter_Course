@@ -23,9 +23,16 @@ class _HomeScreenState extends State<HomeScreen> {
     articles = NewsApiService().fetchData();
   }
 
+  void fetchDataByCategory(String category) {
+    setState(() {
+      // print(category);
+      articles = NewsApiService().fetchDataCategory(category);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
+    return FutureBuilder<List<Article>>(
         future: articles,
         builder: (context, snapshot) {
           if(snapshot.connectionState == ConnectionState.waiting) {
@@ -38,13 +45,17 @@ class _HomeScreenState extends State<HomeScreen> {
           final List<Article> news = snapshot.data!;
           return Column(
             children: [
-              ButtonCategory(),
+              ButtonCategory(onSelected: fetchDataByCategory),
               Expanded(
                 child: ListView.builder(
                   itemCount: news.length,
                   itemBuilder: (context, index) {
                     final Article article = news[index];
-                    return NewsCardCategory(article: article);
+                    if(snapshot.connectionState == ConnectionState.waiting) {
+                      return const CircularProgressIndicator();
+                    } else {
+                      return NewsCardCategory(article: article);
+                    }
                   },
                 ),
               ),
