@@ -28,6 +28,8 @@ class NewsApiService {
          throw Exception('Error fetching articles: $e');
       }
 
+
+
    }
 
    Future<List<Article>> fetchDataCategory(String category) async {
