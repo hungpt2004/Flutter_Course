@@ -51,6 +51,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemCount: news.length,
                   itemBuilder: (context, index) {
                     final Article article = news[index];
+                    if(article.urlToImage == null) {
+                      article.urlToImage == '';
+                    }
                     if(snapshot.connectionState == ConnectionState.waiting) {
                       return const CircularProgressIndicator();
                     } else {
