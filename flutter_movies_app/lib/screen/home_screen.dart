@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: EdgeInsets.only(left: 26, bottom: 10, top: 12),
             child: Text("Now Showing",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500)),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400, color: Colors.black)),
           ),
           SlideMovieWidget(),
 
@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: EdgeInsets.only(left: 26, bottom: 10, top: 12),
             child: Text("Up Coming Movies",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500)),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400)),
           ),
           UpcomingMovieScreen(),
 
@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(height: 10,),
           Padding(
             padding: EdgeInsets.only(left: 26, bottom: 10, top: 12),
-            child: Text("Popular Movies", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500)),
+            child: Text("Popular Movies", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400)),
           ),
           PopularMovieScreen(),
 
