@@ -20,6 +20,7 @@ class Article {
       required this.publishedAt,
       this.content});
 
+  //Method map object
   factory Article.fromJson(Map<String, dynamic> json) {
     return Article(
         source: Source.fromJson(json['source']),

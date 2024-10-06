@@ -37,7 +37,6 @@ class _ButtonCategoryState extends State<ButtonCategory> {
         itemCount: category.length,
         itemBuilder: (context, index) {
           final type = category[index];
-          final isSelected = type == selectType;
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: Column(

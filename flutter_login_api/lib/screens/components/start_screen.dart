@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_login_api/screens/login_register_screen.dart';
+import 'package:flutter_login_api/screens/components/login_screen.dart';
 import 'package:flutter_login_api/widget/slide_page_route.dart';
 
 class StartScreen extends StatefulWidget {

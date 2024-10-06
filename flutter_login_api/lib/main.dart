@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_login_api/screens/login_register_screen.dart';
-import 'package:flutter_login_api/screens/start_screen.dart';
+import 'package:flutter_login_api/screens/components/start_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
