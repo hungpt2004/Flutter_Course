@@ -14,3 +14,11 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+ChangeNotifierProvider
+Không giống như Provider, ChangeNotifierProvider lắng nghe các thay đổi trong data model. 
+Khi có thay đổi, nó sẽ xây dựng lại bất kỳ widget nào trong Consumer. Trong hàm build thay đổi Provider thành ChangeNotifierProvider. 
+Lớp mô hình cần sử dụng extend ChangeNotifier (hoặc with ChangeNotifier). 
+Điều này cung cấp cho bạn quyền truy cập vào notifyListeners() và bất kỳ lúc nào bạn gọi notifyListeners() thì 
+ChangeNotifierProvider sẽ được thông báo và tất cả các widget bên trong Consumers sẽ được rebuild lại.
+
