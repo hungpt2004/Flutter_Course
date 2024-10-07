@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_tutorial/bloc.dart';
-import 'package:flutter_bloc_tutorial/state.dart';
+import 'package:flutter_bloc_tutorial/bloc/bloc.dart';
+import 'package:flutter_bloc_tutorial/bloc/state.dart';
 
 import 'event.dart';
 
@@ -16,6 +16,7 @@ class CounterScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Counter BLoC Example'),
       ),
+
       body: BlocBuilder<CounterBloc, CounterState>(
         builder: (context, state) {
           return Center(
@@ -26,6 +27,7 @@ class CounterScreen extends StatelessWidget {
           );
         },
       ),
+
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
