@@ -8,6 +8,7 @@ class FavoriteProvider extends ChangeNotifier {
   List<Product> get favorites => _favorite;
   void toggleFavorite(Product product) {
     if (_favorite.contains(product)) {
+      print(1);
       _favorite.remove(product);
     } else {
       _favorite.add(product);
@@ -17,6 +18,7 @@ class FavoriteProvider extends ChangeNotifier {
 
   bool isExist(Product product) {
     final isExist = _favorite.contains(product);
+    print(2);
     return isExist;
   }
 

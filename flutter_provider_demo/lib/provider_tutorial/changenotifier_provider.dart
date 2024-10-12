@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-// void main() => runApp(MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    print(0);
     return ChangeNotifierProvider<MyModel>( //      <--- ChangeNotifierProvider
       create: (context) => MyModel(),
       child: MaterialApp(
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
                   color: Colors.green[200],
                   child: Consumer<MyModel>( //                  <--- Consumer
                     builder: (context, myModel, child) {
+                      print(1);
                       final myModel = Provider.of<MyModel>(context, listen: false);
                       return ElevatedButton(
                         child: Text('Do something'),
@@ -36,6 +38,7 @@ class MyApp extends StatelessWidget {
                 color: Colors.blue[200],
                 child: Consumer<MyModel>( //                    <--- Consumer
                   builder: (context, myModel, child) {
+                    print(2);
                     return Text(myModel.someValue);
                   },
                 ),

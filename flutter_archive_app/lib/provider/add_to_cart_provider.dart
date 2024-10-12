@@ -6,9 +6,9 @@ import '../models/product_model.dart';
 class CartProvider extends ChangeNotifier {
   final List<Product> _cart = [];
   List<Product> get cart => _cart;
+
   void toogleFavorite(Product product) {
     // toogleFavorite is just a name you can give what ever you wants to
-
     if (_cart.contains(product)) {
       for (Product element in _cart) {
         element.quantity++;

@@ -21,6 +21,7 @@ class _AddToCartState extends State<AddToCart> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Container(
+        margin: const EdgeInsets.only(bottom: 20),
         height: 85,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
@@ -110,7 +111,7 @@ class _AddToCartState extends State<AddToCart> {
                       fontSize: 20),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

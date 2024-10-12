@@ -180,7 +180,6 @@ final List<Product> all = [
     quantity: 1,
   ),
 ];
-
 final List<Product> shoes = [
   Product(
     title: "Air Jordan",
@@ -267,10 +266,8 @@ final List<Product> shoes = [
     rate: 0.0,
     quantity: 1,
   ),
-  
+
 ];
-
-
 final List<Product> beauty = [
   Product(
     title: "Face Care Product",
@@ -324,9 +321,8 @@ final List<Product> beauty = [
     quantity: 1,
   ),
 ];
-
 final List<Product> womenFashion = [
-  
+
   Product(
     title: " Women Kurta",
     description:
@@ -397,7 +393,6 @@ final List<Product> womenFashion = [
   ),
 ];
 final List<Product> jewelry = [
-
 Product(
     title: "Earrings",
     description:
@@ -468,7 +463,7 @@ Product(
   ),
 ];
 final List<Product> menFashion = [
-  
+
   Product(
     title: "Man Jacket",
     description:

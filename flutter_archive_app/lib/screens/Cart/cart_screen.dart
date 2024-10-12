@@ -15,10 +15,12 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     final provider = CartProvider.of(context);
     final finalList = provider.cart;
-    producrQuantity(IconData icon, int index) {
+
+    productQuantity(IconData icon, int index) {
       return GestureDetector(
         onTap: () {
           setState(() {
+            print(1);
             icon == Icons.add
                 ? provider.incrementQtn(index)
                 : provider.decrementQtn(index);
@@ -46,11 +48,16 @@ class _CartScreenState extends State<CartScreen> {
                 IconButton(
                   style: IconButton.styleFrom(
                     backgroundColor: Colors.white,
-                    padding: const EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(5),
                   ),
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.arrow_back_ios,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                    ),
                   ),
                 ),
                 const Text(
@@ -161,7 +168,7 @@ class _CartScreenState extends State<CartScreen> {
                             child: Row(
                               children: [
                                 const SizedBox(width: 10),
-                                producrQuantity(Icons.add, index),
+                                productQuantity(Icons.add, index),
                                  const SizedBox(width: 10),
                                 Text(
                                   cartItems.quantity.toString(),
@@ -171,7 +178,7 @@ class _CartScreenState extends State<CartScreen> {
                                   ),
                                 ),
                                  const SizedBox(width: 10),
-                                producrQuantity(Icons.remove, index),
+                                productQuantity(Icons.remove, index),
                                  const SizedBox(width: 10),
                               ],
                             ),

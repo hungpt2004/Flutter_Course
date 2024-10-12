@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => MultiProvider(
     providers: [
       // for add to cart
-      ChangeNotifierProvider(create: (_)=>CartProvider()),
+      // ChangeNotifierProvider(create: (_)=>CartProvider()),
       // for favorite
       ChangeNotifierProvider(create: (_)=>FavoriteProvider()),
     ],

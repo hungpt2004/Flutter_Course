@@ -4,13 +4,16 @@ import '../../../Provider/favorite_provider.dart';
 import '../../../constants.dart';
 import '../../../models/product_model.dart';
 import '../../Detail/detail_screen.dart';
+import 'message_toast.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
-  const ProductCard({super.key, required this.product});
+
+  ProductCard({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
+    bool isFavourite = false;
     final provider = FavoriteProvider.of(context);
 
     return GestureDetector(
@@ -32,6 +35,7 @@ class ProductCard extends StatelessWidget {
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 const SizedBox(height: 5),
                 Center(
@@ -39,8 +43,8 @@ class ProductCard extends StatelessWidget {
                     tag: product.image,
                     child: Image.asset(
                       product.image,
-                      width: 150,
-                      height: 150,
+                      width: 120,
+                      height: 120,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -102,6 +106,16 @@ class ProductCard extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   provider.toggleFavorite(product);
+                  isFavourite = !isFavourite;
+                  if(isFavourite == true){
+                    print(isFavourite);
+                    showMessageDialog(context,"Add favourite success", true);
+                  }
+                  isFavourite = false;
+                  if(isFavourite = false) {
+                    print(isFavourite);
+                    showMessageDialog(context,"Remove favourite success", false);
+                  }
                 },
                 child: Icon(
                   provider.isExist(product)
