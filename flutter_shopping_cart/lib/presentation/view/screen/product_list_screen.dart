@@ -60,6 +60,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
           return ListTile(
             title: Text(product.name),
             subtitle: Text("\$${product.price}"),
+
             trailing: IconButton(
               icon: Icon(
                 product.isFavorite ? Icons.favorite : Icons.favorite_border,
@@ -69,14 +70,18 @@ class _ProductListScreenState extends State<ProductListScreen> {
                 // Add or remove from favorites
                 if (product.isFavorite) {
                   CartBloc.removeFavorite(context, product);
+                  setState(() {
+                    product.isFavorite = false;
+                  });
                 } else {
                   CartBloc.addFavourite(context, product);
+                  setState(() {
+                    product.isFavorite = true;
+                  });
                 }
-                setState(() {
-                  product.isFavorite;
-                });
               },
             ),
+
             onTap: () {
               Navigator.push(
                 context,

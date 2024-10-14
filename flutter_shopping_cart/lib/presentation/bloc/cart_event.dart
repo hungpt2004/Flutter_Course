@@ -24,12 +24,14 @@ class UpdateQuantity extends CartEvent {
   UpdateQuantity(this.productId, this.quantity);
 }
 
+//Add Favorite
 class AddFavoriteProduct extends CartEvent {
   final Product product;
 
   AddFavoriteProduct(this.product);
 }
 
+//Remove Favorite
 class RemoveFavoriteProduct extends CartEvent {
   final String productId;
 
