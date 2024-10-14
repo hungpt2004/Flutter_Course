@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../Model/itesm_model.dart';
 
-class ProductConroller extends GetxController {
+class ProductController extends GetxController {
   var productItems = <Product>[].obs;
   var isLoading = true.obs;
 

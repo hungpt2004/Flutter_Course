@@ -4,7 +4,7 @@ import '../Model/itesm_model.dart';
 import '../Services/get_controller.dart';
 
 class HomePage extends StatelessWidget {
-  final ProductConroller productConroller = Get.put(ProductConroller());
+  final ProductController productController = Get.put(ProductController());
   HomePage({super.key});
 
   @override
@@ -26,30 +26,32 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
+
             child: Obx(
               () {
-                if (productConroller.isLoading.value) {
+                if (productController.isLoading.value) {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else {
                   return GridView.builder(
-                    itemCount: productConroller.productItems.length,
+                    itemCount: productController.productItems.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             crossAxisSpacing: 12,
                             mainAxisSpacing: 12,
-                            childAspectRatio: 0.69),
+                            childAspectRatio: 0.7),
                     itemBuilder: (context, index) {
                       return ProductItemsDisplay(
-                        product: productConroller.productItems[index],
+                        product: productController.productItems[index],
                       );
                     },
                   );
                 }
               },
             ),
+
           ),
         ],
       ),
@@ -90,7 +92,7 @@ class ProductItemsDisplay extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               product.title,
-              maxLines: 2,
+              maxLines: 1,
 
               overflow: TextOverflow
                   .ellipsis, // if the title is more then two line it show ... ,

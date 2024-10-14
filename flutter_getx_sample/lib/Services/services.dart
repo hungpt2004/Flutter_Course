@@ -13,7 +13,6 @@ class RemoteServices {
     } else {
       print('Error response:${response.body}');
     }
-
     return null;
   }
 }

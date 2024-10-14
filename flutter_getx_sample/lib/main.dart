@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx_sample/Screen/homescreen.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'Form_Input_GetX/Pages/home_page.dart';
+import 'Screen/homescreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,8 +12,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomePage(),
+    return GetMaterialApp(
+      home: Home(),
     );
   }
 }
