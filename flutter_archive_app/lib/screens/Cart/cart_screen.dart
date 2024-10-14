@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_archive_app/screens/Home/home_screen.dart';
+import 'package:flutter_archive_app/screens/nav_bar_screen.dart';
 import '../../constants.dart';
 import '../../provider/add_to_cart_provider.dart';
 import 'check_out.dart';
@@ -51,7 +53,9 @@ class _CartScreenState extends State<CartScreen> {
                     padding: const EdgeInsets.all(5),
                   ),
                   onPressed: () {
-                    Navigator.pop(context);
+                    setState(() {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => BottomNavBar()));
+                    });
                   },
                   icon: const Padding(
                     padding: EdgeInsets.only(left: 10),
