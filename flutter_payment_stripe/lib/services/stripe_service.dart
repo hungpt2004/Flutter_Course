@@ -7,10 +7,10 @@ class StripeService {
 
   static final StripeService instance = StripeService._();
 
-  Future<void> makePayment() async {
+  Future<void> makePayment(int price) async {
     try {
       String? paymentIntentClientSecret = await _createPaymentIntent(
-        200,
+        price,
         "vnd",
       );
       if (paymentIntentClientSecret == null) return;

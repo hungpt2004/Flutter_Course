@@ -8,6 +8,7 @@ void main() async {
   runApp(const MyApp());
 }
 
+//Ensure quality of StripePayment
 Future<void> _setup() async {
   WidgetsFlutterBinding.ensureInitialized();
   Stripe.publishableKey = stripePublishableKey;

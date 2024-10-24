@@ -18,10 +18,10 @@ class RemoveProduct extends CartEvent {
 
 //Update Product have param is productId and update quantity
 class UpdateQuantity extends CartEvent {
-  final String productId;
+  final Product product;
   final int quantity;
 
-  UpdateQuantity(this.productId, this.quantity);
+  UpdateQuantity(this.product, this.quantity);
 }
 
 //Add Favorite

@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             MaterialButton(
               onPressed: () {
-                StripeService.instance.makePayment();
+                StripeService.instance.makePayment(1000);
               },
               color: Colors.green,
               child: const Text(

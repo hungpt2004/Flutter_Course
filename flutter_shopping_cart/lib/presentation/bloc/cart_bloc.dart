@@ -20,6 +20,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       final existingProductIndex = state.items.indexWhere((item) => item.id == event.product.id); //Return index of product chosen if do not have return -1
       List<Product> products = state.items;
 
+      //indexWhere return a integer value, and if the product not null => it will be saved in index rather than or equals 0
       //Check exist product
       if(existingProductIndex >= 0) {
         products[existingProductIndex].quantity++;
@@ -38,8 +39,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     
     void _onUpdateQuantity(UpdateQuantity event, Emitter<CartState> emit){
       final updatingProduct = state.items.map((items) {
-        if(items.id == event.productId){
-          items.quantity = event.quantity;
+        if(items.id == event.product.id){
+          items.quantity = event.product.quantity;
         }
         return items;
       }).toList();
@@ -76,8 +77,6 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     }
 
 
-
-
     //BLOC STATIC
     static void addProduct(BuildContext context, Product product) {
       context.read<CartBloc>().add(AddProduct(product));
@@ -92,10 +91,10 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       context.read<CartBloc>().add(RemoveFavoriteProduct(product.id));
     }
     static void updateIncrementQuantity(BuildContext context, Product product) {
-      context.read<CartBloc>().add(UpdateQuantity(product.id,product.quantity + 1));
+      context.read<CartBloc>().add(UpdateQuantity(product,product.quantity + 1));
     }
     static void updateDecrementQuantity(BuildContext context, Product product) {
-      context.read<CartBloc>().add(UpdateQuantity(product.id,product.quantity - 1));
+      context.read<CartBloc>().add(UpdateQuantity(product,product.quantity - 1));
     }
 
 }

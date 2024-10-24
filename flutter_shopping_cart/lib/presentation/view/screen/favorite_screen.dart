@@ -14,6 +14,7 @@ class FavoritesScreen extends StatelessWidget {
       ),
       body: BlocBuilder<CartBloc, CartState>(
         builder: (context, state) {
+
           final favoriteProducts = state.items.where((product) => product.isFavorite).toList();
 
           if (favoriteProducts.isEmpty) {
